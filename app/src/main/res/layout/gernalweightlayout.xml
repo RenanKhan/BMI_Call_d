@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_marginTop="2.5mm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/weighttextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Weight"
+            android:textColor="#d99a4d"
+            android:textSize="3.5mm"
+            android:layout_marginTop="1mm"
+            />
+        <EditText
+            android:textAlignment="center"
+            android:inputType="number"
+            android:id="@+id/weight_edit"
+            android:layout_width="18mm"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2mm"
+            />
+        <LinearLayout
+            android:id="@+id/weighttogglelayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3mm"
+            android:layout_marginLeft="1mm"
+            >
+            <TextView
+                android:id="@+id/weight_toggle_textviewgernal"
+                android:layout_width="wrap_content"
+                android:layout_height="4mm"
+                android:textSize="3mm"
+                android:background="?android:attr/selectableItemBackground"
+                android:text="kg"
+                android:textColor="#009788"
+                android:layout_marginLeft="3mm"
+
+                />
+            <ImageView
+                android:layout_marginLeft="1mm"
+                android:layout_marginTop="2mm"
+                android:layout_width="1.5mm"
+                android:layout_height="1mm"
+                android:id="@+id/dropweightgernal"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

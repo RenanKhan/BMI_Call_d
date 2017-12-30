@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/bodymassindexicon"
+            android:title="Body Mass Index" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/waisttoheighticon"
+            android:title="Waist to Height Ratio" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/fatpercenticon"
+            android:title="Body Fat Percentage" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/baselmatabolicicon"
+            android:title="Basal Metabolic Rate" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="Rate Us" />
+
+        </menu>
+    </item>
+   <!-- <group>
+        <item android:title="">
+            <com.google.android.gms.ads.AdView
+                android:id="@+id/adViewunderdetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ads:adSize="MEDIUM_RECTANGLE"
+                ads:adUnitId="ca-app-pub-9764299659831882/4170389581">
+            </com.google.android.gms.ads.AdView>
+        </item>
+    </group>-->
+</menu>

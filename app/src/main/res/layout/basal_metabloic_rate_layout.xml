@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="2.5mm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+           <!-- <include
+                android:id="@+id/gernaltext"
+                layout="@layout/gernaltextlayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />-->
+            <TextView
+                android:id="@+id/weighttextviewbmr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weight"
+                android:textSize="3.5mm"
+                android:layout_marginTop="1mm"
+                />
+            <EditText
+                android:inputType="number"
+                android:id="@+id/basal_metabloic_weight_edit"
+                android:layout_width="18mm"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2mm"
+                />
+            <LinearLayout
+                android:id="@+id/basal_metabloic_weighttogglelayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                >
+                <TextView
+                    android:id="@+id/basal_metabloicweight_toggle_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="4mm"
+                    android:textSize="3mm"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:text="kg"
+                    android:layout_marginLeft="3mm"
+                    />
+                <ImageView
+                    android:layout_marginLeft="1mm"
+                    android:layout_marginTop="2mm"
+                    android:layout_width="1.5mm"
+                    android:layout_height="1mm"
+                    android:id="@+id/dropdownweightbmr"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <Button
+            android:id="@+id/basal_metabloic_calculate"
+            android:layout_width="21mm"
+            android:layout_height="7.2mm"
+            android:layout_marginTop="4mm"
+            android:text="Calculate"
+            android:textSize="2.8mm"
+            android:textColor="#ffffff"
+            android:layout_gravity="center_horizontal"
+            />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="2mm"
+           android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           >
+            <TextView android:id="@+id/text9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Your BMR"
+                android:textColor="#b84a67"
+                android:textStyle="bold"
+                android:textSize="4mm"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4mm"
+               />
+
+            <TextView
+                android:id="@+id/bmr_resultTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textColor="#b84a67"
+                android:layout_marginTop="1mm"
+                android:text=""
+                android:textSize="4mm"
+          />
+        </LinearLayout>
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adViewunderdetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            ads:adSize="LARGE_BANNER"
+            ads:adUnitId="ca-app-pub-9764299659831882/4170389581">
+        </com.google.android.gms.ads.AdView>
+</LinearLayout>

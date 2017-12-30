@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+
+        android:layout_marginTop="0mm"
+        android:layout_marginLeft="0mm"
+        android:layout_marginRight="0mm"
+        android:layout_width="wrap_content"
+        android:layout_height="28mm"
+        >
+
+
+        <ImageView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+
+            android:background="#FFFFFF"
+            android:layout_marginBottom="0mm"
+            android:layout_marginTop="0mm"
+            />
+
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_marginTop="1mm"
+        android:layout_marginLeft="5mm"
+        android:layout_marginRight="5mm"
+        android:layout_width="wrap_content"
+        android:layout_height="42mm"
+       >
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detail"
+            android:textColor="#000000"
+            android:textSize="5mm"
+            android:layout_marginTop="2.5mm"
+            android:layout_marginLeft="4mm"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30mm"
+            android:text="Apple cider vinegar weight loess Total body mass commonly means body fat. which is excessive if free from the variety of illnesses. Weight loss for obese or overweight persons or have a beneficial impact on their lives including:"
+            android:textSize="3mm"
+            android:layout_marginTop="4mm"
+            android:layout_marginLeft="4mm"
+            android:layout_marginRight="3mm"
+            />
+
+        </LinearLayout>
+
+        </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_marginTop="2mm"
+        android:layout_marginLeft="5mm"
+        android:layout_marginRight="5mm"
+        android:layout_width="wrap_content"
+        android:layout_height="42mm"
+        >
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weight"
+                android:textColor="#000000"
+                android:textSize="5mm"
+                android:layout_marginTop="2.5mm"
+                android:layout_marginLeft="4mm"
+                />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30mm"
+                android:text="• Apple cider vinegar weight loess Total body mass. •Commonly means body fat. •which is excessive if free from the variety of illnesses. "
+                android:textSize="3mm"
+                android:layout_marginTop="4mm"
+                android:layout_marginLeft="4mm"
+                android:layout_marginRight="3mm"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+
+
+
+
+</LinearLayout>

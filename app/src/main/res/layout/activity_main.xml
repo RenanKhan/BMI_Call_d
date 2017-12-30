@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+  <!--  <include
+        layout="@layout/detail_sc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />-->
+  <include
+      android:layout_alignParentTop="true"
+      android:layout_above="@+id/sceondscreenlayout"
+      android:id="@+id/herder"
+      layout="@layout/app_bar_main"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+  <RelativeLayout
+      android:gravity="center"
+      android:id="@+id/firstscreenlayout"
+      android:visibility="visible"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+    <include
+        layout="@layout/firstmainscreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+  </RelativeLayout>
+  <RelativeLayout
+      android:id="@+id/sceondscreenlayout"
+      android:visibility="invisible"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content">
+      <ScrollView
+          android:layout_marginTop="10.5mm"
+          android:id="@+id/gernalscrolview"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+    <include
+        android:layout_centerHorizontal="true"
+        android:id="@+id/gernaltext"
+        layout="@layout/gernaltextlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_below="@+id/gernaltext"
+      android:visibility="gone"
+      android:id="@+id/bodymassindexlayout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+    <include
+        layout="@layout/bodymassindex_layut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+  </RelativeLayout>
+  <RelativeLayout
+      android:layout_below="@+id/gernaltext"
+      android:id="@+id/wais_to_heightlayout"
+      android:visibility="gone"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+   <!-- <include
+        android:id="@+id/gernaltext"
+        layout="@layout/gernaltextlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />-->
+    <include
+        layout="@layout/waist_to_height"
+        />
+  </RelativeLayout>
+<!--
+////////////////////////////// this is for body fat percentage
+-->
+    <RelativeLayout
+        android:layout_below="@+id/gernaltext"
+        android:id="@+id/body_fat_percentagelayout"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+   <!--   <include
+          android:id="@+id/gernaltext"
+          layout="@layout/gernaltextlayout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content" />-->
+      <include
+          layout="@layout/body_fat_percentge_layout"
+          />
+    </RelativeLayout>
+<!--
+    ///////////////////////////////////////////this is for basal metablic rate
+-->
+    <RelativeLayout
+        android:layout_below="@id/gernaltext"
+        android:id="@+id/basal_metabloic"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+      <include
+          android:layout_centerHorizontal="true"
+          layout="@layout/basal_metabloic_rate_layout"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent" />
+    </RelativeLayout>
+      </RelativeLayout>
+      </ScrollView>
+<!--    /////////////////////      -->
+  </RelativeLayout>
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer"
+        />
+</android.support.v4.widget.DrawerLayout>

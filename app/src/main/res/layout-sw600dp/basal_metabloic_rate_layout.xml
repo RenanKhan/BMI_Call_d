@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <ScrollView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <LinearLayout
+
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+
+            android:layout_marginTop="2.5mm"
+            android:layout_marginLeft="18mm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/weighttextviewbmr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Weight"
+                android:textSize="6.5mm"
+                android:layout_marginTop="1mm"
+                />
+            <EditText
+                android:inputType="number"
+                android:id="@+id/basal_metabloic_weight_edit"
+                android:layout_width="18mm"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8mm"
+                />
+            <LinearLayout
+                android:id="@+id/basal_metabloic_weighttogglelayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3mm"
+                android:layout_marginLeft="3mm"
+                >
+                <TextView
+                    android:id="@+id/basal_metabloicweight_toggle_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="7mm"
+                    android:textSize="5mm"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:text="kg"
+                    android:layout_marginLeft="3mm"
+                    />
+                <ImageView
+                    android:layout_marginLeft="1mm"
+                    android:layout_marginTop="4mm"
+                    android:layout_width="1.5mm"
+                    android:layout_height="1mm"
+                    android:id="@+id/dropdownweightbmr"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <Button
+            android:layout_gravity="center_horizontal"
+
+            android:id="@+id/basal_metabloic_calculate"
+            android:layout_width="25mm"
+            android:layout_height="9.2mm"
+            android:layout_marginTop="4mm"
+            android:text="Calculate"
+            android:textSize="2.7mm"
+            android:textColor="#ffffff"
+
+            />
+
+        <LinearLayout
+
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_marginTop="2mm"
+            android:layout_marginLeft="5mm"
+            android:layout_marginRight="5mm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           >
+
+
+            <TextView android:id="@+id/text9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Result"
+                android:textColor="#b84a67"
+
+                android:textStyle="bold"
+                android:textSize="6.5mm"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="4mm"
+               />
+
+            <TextView
+                android:textColor="#b84a67"
+                android:id="@+id/bmr_resultTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="1mm"
+                android:text=""
+                android:textSize="6.5mm"
+          />
+
+        </LinearLayout>
+
+
+      <!--  <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginTop="0mm"
+            android:layout_marginLeft="5mm"
+            android:layout_marginRight="5mm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Energy Expenditue"
+                android:textColor="#000000"
+                android:textStyle="bold"
+                android:textSize="4mm"
+                android:layout_marginTop="5mm"
+                android:layout_marginLeft="5.5mm"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="> 3247 kcal"
+                android:textSize="3mm"
+                android:layout_marginLeft="17.5mm"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(Depending on your activity)"
+                android:textColor="#000000"
+                android:textSize="3mm"
+                android:layout_marginLeft="8.5mm"/>
+
+        </LinearLayout>-->
+
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>
