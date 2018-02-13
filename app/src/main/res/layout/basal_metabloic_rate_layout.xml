@@ -19,7 +19,7 @@
                 android:id="@+id/weighttextviewbmr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Weight"
+                android:text="@string/weight"
                 android:textSize="3.5mm"
                 android:layout_marginTop="1mm"
                 />
@@ -42,7 +42,7 @@
                     android:layout_height="4mm"
                     android:textSize="3mm"
                     android:background="?android:attr/selectableItemBackground"
-                    android:text="kg"
+                    android:text="@string/kg"
                     android:layout_marginLeft="3mm"
                     />
                 <ImageView
@@ -59,7 +59,7 @@
             android:layout_width="21mm"
             android:layout_height="7.2mm"
             android:layout_marginTop="4mm"
-            android:text="Calculate"
+            android:text="@string/Calculate"
             android:textSize="2.8mm"
             android:textColor="#ffffff"
             android:layout_gravity="center_horizontal"
@@ -75,7 +75,7 @@
             <TextView android:id="@+id/text9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Your BMR"
+                android:text="@string/your_bmr"
                 android:textColor="#b84a67"
                 android:textStyle="bold"
                 android:textSize="4mm"

@@ -21,10 +21,10 @@ android {
 
     defaultConfig {
         applicationId "com.eclixtech.bmicalculator"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 25
-        versionCode 6
-        versionName "1.5"
+        versionCode 8
+        versionName "1.7"
     }
     buildTypes {
         release {

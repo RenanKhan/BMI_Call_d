@@ -248,16 +248,18 @@ public class MainActivity extends AppCompatActivity
         ////////////////add aD
         AdRequest adRequest = new AdRequest.Builder()
                 .build();
-        mAdView.loadAd(adRequest);
-        underDetailadView.loadAd(adRequest);
-        mAdViewBFP.loadAd(adRequest);
-        mAdViewBMI.loadAd(adRequest);
-        mAdViewWaistToHeight.loadAd(adRequest);
-        mInterstitialAd = new InterstitialAd(this);
-        // set the ad unit ID
-        mInterstitialAd.setAdUnitId("ca-app-pub-9764299659831882/7889406658");
-        // Load ads into Interstitial Ads
-        mInterstitialAd.loadAd(adRequest);
+        if(adRequest != null){
+            mAdView.loadAd(adRequest);
+            underDetailadView.loadAd(adRequest);
+            mAdViewBFP.loadAd(adRequest);
+            mAdViewBMI.loadAd(adRequest);
+            mAdViewWaistToHeight.loadAd(adRequest);
+            mInterstitialAd = new InterstitialAd(this);
+            // set the ad unit ID
+            mInterstitialAd.setAdUnitId("ca-app-pub-9764299659831882/7889406658");
+            // Load ads into Interstitial Ads
+            mInterstitialAd.loadAd(adRequest);
+        }
         //////////////////// end add
         weightGernaltogglelayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -1025,7 +1027,7 @@ public class MainActivity extends AppCompatActivity
             try {
             Intent viewIntent =
                     new Intent("android.intent.action.VIEW",
-                            Uri.parse("https://play.google.com/store/apps/details?navId=com.homeremedies.rehan.homeremedies&hl=en/"));
+                            Uri.parse("https://play.google.com/store/apps/details?id=com.eclixtech.bmicalculator"));
             startActivity(viewIntent);
              } catch(Exception e) {
             Toast.makeText(getApplicationContext(),"Unable to Connect Try Again...",
