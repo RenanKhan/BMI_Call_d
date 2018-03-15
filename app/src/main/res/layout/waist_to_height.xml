@@ -140,26 +140,26 @@
                 android:textColor="#ffffff"
                 android:layout_gravity="center_horizontal"
                 />
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/ratio"
+                android:textColor="#f24a57"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ratio"
+                android:textSize="3.5mm"
+                android:layout_marginTop="2mm"
+
+                />
                 <LinearLayout
-                    android:layout_marginTop="2mm"
-                    android:layout_marginLeft="5mm"
-                    android:layout_marginRight="5mm"
+                   android:layout_gravity="center_horizontal"
                     android:layout_width="wrap_content"
-                    android:layout_height="14mm"
-                    android:background="@drawable/mass"
+                    android:layout_height="wrap_content"
                   >
                     <LinearLayout
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content">
-                        <TextView
-                            android:textColor="#f24a57"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Waist to Height Ratio: "
-                            android:textSize="3.5mm"
-                            android:layout_marginTop="4mm"
-                            android:layout_marginLeft="1mm"
-                            />
+
                         <TextView
                             android:textColor="#f24a57"
                             android:id="@+id/waisttoheightresulttext"
@@ -167,11 +167,35 @@
                             android:layout_height="wrap_content"
                             android:text=""
                             android:textSize="5mm"
-                            android:layout_marginTop="4mm"
+
+                            />
+                        <TextView
+                            android:textStyle="bold"
+                            android:layout_marginLeft="2mm"
+                            android:textColor="#f24a57"
+                            android:id="@+id/waisttoheightresulttextword"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textSize="5mm"
+
                             />
                     </LinearLayout>
 
                 </LinearLayout>
+            <ImageView
+                android:layout_marginLeft="5mm"
+                android:layout_marginRight="5mm"
+                android:id="@+id/arrowiconwaist_to_height"
+                android:background="@drawable/arrowicon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_marginLeft="5mm"
+                android:layout_marginRight="5mm"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="@drawable/resultline"/>
             <LinearLayout
                 android:layout_marginLeft="1.5mm"
                 android:id="@+id/extremelyslimlayout"

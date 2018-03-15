@@ -1,8 +1,6 @@
 package bmrcalculator.bmicalculator.gul_raiz_ahmad.bmi_call_d;
 
-import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,6 +22,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,11 +50,13 @@ public class MainActivity extends AppCompatActivity
     Button bodyMassIndexButton,waistToHeightButton,bodyFatPercentageButton,basalMetabloicRateButton;
     public int navId;
     String gender ;
-    TextView resultstatuseBMITextView,bmiUnderWeightTextView;///just for
+    TextView resultstatuseBMITextView,bmiUnderWeightTextView,waistToHeightWord;///just for
     TextView bmiResultTextView,idealWeightTextView,fatTextView,bodymassresultTextView,bodyMassRecmendTextView,waistToggleTextView;
     EditText ageGernalEditText, heightEditTextFeet,weightEditText, heightEditTextInch, hipBFPEditText;
 //    TextView underWeightNameLayout,underWeightDataTextView, overWeightNameLayout,overWeightdataTextView, healthyNameLayout,healthyDataTextView, obeseNameLayout,obeseDataTextView;
-    Button calBodyMassIndexBtn;
+    Button calBMIBtn;
+    ImageView arrowIconBMI,arrowIconwaistToHeight,arrowIconBodyFatPercentage;
+    TextView BMIresultTextViewWord,bodyFatresultTextViewWord;
     /////////////////waist to height
     TextView waistToHeightExtremlySlimTextView,waistToHeightHealthyTextView,waistToHeightOverWeightSlimTextView,waistToHeightVeryOverweightTextView,waistToHeightObeseTextView;
     Button calWaistToHeightBtn;
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity
     ///////////////////////////////////////////////////////////stat waist to height
     LinearLayout extremlyslimWToHlayout,healthyslimWToHlayout,healthyWToHlayout,overweightWToHlayout,veryoverweightWToHlayout,morbidlyObeseWToHlayout;
     TextView bodyFatPerResultStuts;
+    TextView waistToHeightRatioTextView;
     ////////////////////////////////////////////////end waist to height
 ////////////////////////////////////////////stat Body fat percentage////////////////////////////////////////////////////////
         EditText neckBFPEditText;
@@ -109,13 +111,19 @@ public class MainActivity extends AppCompatActivity
     RelativeLayout sceondscreenlayot,firstscreenlayout;
     //////////////
     ImageView dropdownGernalheight,dropdownGernalwaist, dropDownGernalWeight,dropDownwaistbfp,dropDownNeckbfp,dropDownWeightBMR,dropDownHip;
-    private void intilaize(){
+    private void initialion(){
 //////////////////////////////////////first main screen start
         //bodyMassIndexButton,waistToHeightButton,bodyFatPercentageButton,basalMetabloicRateButton;
         //#16222d
         gender = "man";
         setActionBarTitleAndColor("BMI","#16222d");
+        BMIresultTextViewWord = (TextView)findViewById(R.id.bmiTextbodymasssresultwords);
+        bodyFatresultTextViewWord = (TextView) findViewById(R.id.body_fat_per_result_word);
      //   bodyFatPerResultStuts = (TextView) findViewById(R.id.body_fat_per_resultstuts);
+        arrowIconBMI = (ImageView)findViewById(R.id.arrowicon);
+        arrowIconwaistToHeight = (ImageView)findViewById(R.id.arrowiconwaist_to_height) ;
+        arrowIconBodyFatPercentage = (ImageView)findViewById(R.id.arrowicon_body_fat_percentage);
+        //resultBackground = (LinearLayout)findViewById(R.id.resultbg);
         resultstatuseBMITextView = (TextView)findViewById(R.id.resultstutesbmi);
         dropdownGernalheight =  (ImageView)findViewById(R.id.dropdowngernalheight);
         dropdownGernalwaist = (ImageView)findViewById(R.id.gernalwaistdropdown);
@@ -133,6 +141,8 @@ public class MainActivity extends AppCompatActivity
         hipTextView = (TextView)findViewById(R.id.hiptextview);
         weightBMRTextview = (TextView)findViewById(R.id.weighttextviewbmr);
         weightgernalTextView = (TextView)findViewById(R.id.weight_toggle_textviewgernal);
+        waistToHeightRatioTextView = (TextView) findViewById(R.id.ratio);
+
         /////////////////////////////////
         basalMetabloicRateButton = (Button)findViewById(R.id.basalmetabloicimage);
         bodyMassIndexButton = (Button)findViewById(R.id.bodymassindeximage);
@@ -149,6 +159,8 @@ public class MainActivity extends AppCompatActivity
         waistToHeightlayout = (RelativeLayout) findViewById(R.id.wais_to_heightlayout);
         bodyFatPercentageLayout = (RelativeLayout) findViewById(R.id.body_fat_percentagelayout);
         basalMetabloicRateLayout = (RelativeLayout) findViewById(R.id.basal_metabloic);
+        waistToHeightWord = (TextView) findViewById(R.id.waisttoheightresulttextword);
+        //word
         ///////////layout end
         ////////////////////////////////start waist to height
         ////////////start layout
@@ -158,6 +170,7 @@ public class MainActivity extends AppCompatActivity
         veryoverweightWToHlayout = (LinearLayout)findViewById(R.id.veryoverweightlayouts);
         morbidlyObeseWToHlayout = (LinearLayout) findViewById(R.id.morbidlyobeselayout);
         healthyslimWToHlayout = (LinearLayout) findViewById(R.id.healthyslimlayout);
+
         /////end layouts
         ///////////////////////////////end waist to height
         /////////////////////////////////////////////////////////////////////bodymassindex start
@@ -166,7 +179,7 @@ public class MainActivity extends AppCompatActivity
         heightEditTextFeet = (EditText)findViewById(R.id.height_edit_feet);
         weightEditText = (EditText)findViewById(R.id.weight_edit);
         //////////
-        calBodyMassIndexBtn = (Button)findViewById(R.id.calculatebodymess);
+        calBMIBtn = (Button)findViewById(R.id.calculatebodymess);
         heightGernalToggleLayout = (LinearLayout) findViewById(R.id.heighttogglelayout) ;
         weightGernaltogglelayout = (LinearLayout) findViewById(R.id.weighttogglelayout);
         underWeightNameLayout = (LinearLayout) findViewById(R.id.underweight_name);
@@ -244,9 +257,12 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        intilaize();
+        initialion();
+       /* FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.animated_result, new Sample1Fragment()).commit();*/
         ////////////////add aD
-        AdRequest adRequest = new AdRequest.Builder()
+        final AdRequest adRequest = new AdRequest.Builder()
                 .build();
         if(adRequest != null){
             mAdView.loadAd(adRequest);
@@ -472,7 +488,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        calBodyMassIndexBtn.setOnClickListener(new View.OnClickListener() {
+        calBMIBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -498,40 +514,69 @@ public class MainActivity extends AppCompatActivity
 
                 bodymassresultTextView.setText(result[1]);
 
+              // 
+             //   resultBackground.setBackgroundColor();
+                resultstatuseBMITextView.setText("BMI:");
                 if (result[0].equals("under")) {
-                        underWeightNameLayout.setBackgroundColor(Color.parseColor("#f4cccc"));
+                     /*   underWeightNameLayout.setBackgroundColor(Color.parseColor("#f4cccc"));
                         //////////////////////////////////
                        healthyNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         overWeightNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));
-                        obeseNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));
+                        obeseNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));*/
+              //     
+                    moveArrowIcon(50.0f, arrowIconBMI);
+                    BMIresultTextViewWord.setText("Under");
+
+                    BMIresultTextViewWord.setTextColor(Color.parseColor("#65c09c"));
                         //////////////////////////////////
                     } else if (result[0].equals("normal")) {
-                        healthyNameLayout.setBackgroundColor(Color.parseColor("#93c47d"));
-                        ///////////////////////////
+                      //  healthyNameLayout.setBackgroundColor(Color.parseColor("#93c47d"));
+                  //  resultBackground.setBackgroundColor(Color.parseColor("#fafafa"));
+                    moveArrowIcon(550.0f, arrowIconBMI);
+                    BMIresultTextViewWord.setText("Normal");
+                    BMIresultTextViewWord.setTextColor(Color.parseColor("#edae43"));
+
+                    ///////////////////////////
                         //////////////////////////////////
-                        underWeightNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));
+                     /*   underWeightNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         overWeightNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));
-                        obeseNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));
+                        obeseNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));*/
+                   
                         //////////////////////////////////
                         ////////////////////////////////
                     } else if (result[0].equals("over")) {
-                        //bodyMassRecmendTextView .setText("Please do some walk ");
+                //    resultBackground.setBackgroundColor(Color.parseColor("#fafafa"));
 
-                        overWeightNameLayout.setBackgroundColor(Color.parseColor("#f4cccc"));
+                    //bodyMassRecmendTextView .setText("Please do some walk ");
+                    BMIresultTextViewWord.setText("Over");
+                     /*   overWeightNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         //////////////////////////////////
                         underWeightNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         healthyNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));
-                        obeseNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));
-                        //////////////////////////////////
+                        obeseNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));*/
+                    moveArrowIcon(750.0f, arrowIconBMI);
+                    BMIresultTextViewWord.setTextColor(Color.parseColor("#db6439"));
+
+
+                    //////////////////////////////////
                     } else if (result[0].equals("obese")) {
-                      //  bodyMassRecmendTextView .setText("Lets Cup of coffe with doctor ");
+                   
+                    //resultBackground.setBackgroundColor(Color.parseColor("#f4cccc"));
 
-                        obeseNameLayout.setBackgroundColor(Color.parseColor("#f4cccc"));
+                    //  bodyMassRecmendTextView .setText("Lets Cup of coffe with doctor ");
+
+                        //obeseNameLayout.setBackgroundColor(Color.parseColor("#f4cccc"));
                         //////////////////////////////////fafafa
-                        underWeightNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));
+                       /* underWeightNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         healthyNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));
-                        overWeightNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));
-                        //////////////////////////////////
+                        overWeightNameLayout.setBackgroundColor(Color.parseColor("#fafafa"));*/
+                    moveArrowIcon(1050.0f, arrowIconBMI);
+
+                    BMIresultTextViewWord.setTextColor(Color.parseColor("#be3a32"));
+
+                    BMIresultTextViewWord.setText("Obese");
+
+                    //////////////////////////////////
                     }
                // scrollView.fullScroll(View.FOCUS_DOWN);
               //  scrollView.pageScroll(View.FOCUS_DOWN);
@@ -556,6 +601,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
         /////////////////////////////////////////////////////////////////////bodymassindex end
+
 //////////////////weiest to height start
         femaleBtnGernal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -632,7 +678,6 @@ public class MainActivity extends AppCompatActivity
             //    if(getCurrentFocus()!=null) { InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE); inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0); }
                 if(ageGernalEditText.getText().toString().equals("") || heightEditTextFeet.getText().toString().equals("") ||waistGernalEditText.getText().toString().equals("")){
                     Toast.makeText(getBaseContext(),"Please Fill All Fields.",Toast.LENGTH_LONG).show();
-
                 }else {
                     age = Integer.parseInt(ageGernalEditText.getText().toString());
                     height = Integer.parseInt(heightEditTextFeet.getText().toString());
@@ -651,69 +696,93 @@ public class MainActivity extends AppCompatActivity
                     Log.e("result",result[1]);
                   //  double ans = Double.parseDouble(new DecimalFormat("##.##").format(result[1]));
                     waistToHeightOfResultTeextView.setText(result[1]);
+                   // waistToHeightRatioTextView.setText("Ratio :");
                     hideSoftKeyboard();
                     setScrollViewDown();
 
                     if (result[0].equals("extremelyslim")) {
-                        extremlyslimWToHlayout.setBackgroundColor(Color.parseColor("#f4cccc"));
+
+                        waistToHeightWord.setTextColor(Color.parseColor("#65c09c"));
+                        moveArrowIcon(50.0f,arrowIconwaistToHeight);
+                        waistToHeightWord.setText("Extremely Slim");
+                     /*   extremlyslimWToHlayout.setBackgroundColor(Color.parseColor("#f4cccc"));
                         //////////////////////////////////
                         healthyWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         overweightWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         veryoverweightWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         morbidlyObeseWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
-                        healthyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
+                        healthyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));*/
 
                         //////////////////////////////////
                     } else if (result[0].equals("healthyslim")) {
-                        extremlyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
+
+                        waistToHeightWord.setTextColor(Color.parseColor("#65c09c"));
+                        moveArrowIcon(450.0f,arrowIconwaistToHeight);
+                        waistToHeightWord.setText("Healthy Slim");
+                     /*   extremlyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         //////////////////////////////////
                         healthyslimWToHlayout.setBackgroundColor(Color.parseColor("#f4cccc"));
                         healthyWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         overweightWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         veryoverweightWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
-                        morbidlyObeseWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
+                        morbidlyObeseWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));*/
                         //////////////////////////////////
                         ////////////////////////////////
                     }else if (result[0].equals("healthy")) {
-                        extremlyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
+                        moveArrowIcon(650.0f,arrowIconwaistToHeight);
+                      //  waistToHeightWord.setTextColor(Color.parseColor("#ca944"));
+                        waistToHeightWord.setText("Healthy");
+                        waistToHeightWord.setTextColor(Color.parseColor("#edae43"));
+
+                      /*  extremlyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         //////////////////////////////////
                         healthyWToHlayout.setBackgroundColor(Color.parseColor("#93c47d"));
                         overweightWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         veryoverweightWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         morbidlyObeseWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         healthyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
-
+*/
                         //////////////////////////////////
                         ////////////////////////////////
                     } else if (result[0].equals("overweight")) {
-                        extremlyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
+                        waistToHeightWord.setText("Over weight");
+                        moveArrowIcon(850.0f,arrowIconwaistToHeight);
+                        waistToHeightWord.setTextColor(Color.parseColor("#cd4f36"));
+                 /*       extremlyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         //////////////////////////////////
                         healthyWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         overweightWToHlayout.setBackgroundColor(Color.parseColor("#f4cccc"));
                         veryoverweightWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         morbidlyObeseWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
-                        healthyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
+                        healthyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));*/
 
                         //////////////////////////////////
                     } else if (result[0].equals("veryoverweight")) {
-                        extremlyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
+                        waistToHeightWord.setText("Very over weight");
+
+                        waistToHeightWord.setTextColor(Color.parseColor("#c74835"));
+
+                        moveArrowIcon(1050.0f,arrowIconwaistToHeight);
+                    /*    extremlyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         //////////////////////////////////
                         healthyWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         overweightWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         veryoverweightWToHlayout.setBackgroundColor(Color.parseColor("#f4cccc"));
                         morbidlyObeseWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
-                        healthyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
+                        healthyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));*/
 
                         //////////////////////////////////
                     }else if (result[0].equals("morbidlyobese")) {
-                        extremlyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
+                        waistToHeightWord.setText("Morbidly Obese");
+                        waistToHeightWord.setTextColor(Color.parseColor("#ae232f"));
+                        moveArrowIcon(1250.0f,arrowIconwaistToHeight);
+                     /*   extremlyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         //////////////////////////////////
                         healthyWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         overweightWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         veryoverweightWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         morbidlyObeseWToHlayout.setBackgroundColor(Color.parseColor("#f4cccc"));
-                        healthyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));
-
+                        healthyslimWToHlayout.setBackgroundColor(Color.parseColor("#fafafa"));*/
                         //////////////////////////////////
                     }
                     hideSoftKeyboard();
@@ -837,33 +906,45 @@ public class MainActivity extends AppCompatActivity
                     setScrollViewDown();
 
                     if (result[1].equals("low")) {
-                        lowBFPLayout.setBackgroundColor(Color.parseColor("#93c47d"));
+                        bodyFatSetForResult(50.0f," Low","#68c098");
+
+                      /*  lowBFPLayout.setBackgroundColor(Color.parseColor("#93c47d"));
                         //////////////////////////////////
                         normalBFPLayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         highBFPLayout.setBackgroundColor(Color.parseColor("#fafafa"));
-                        veryhighBFPLayout.setBackgroundColor(Color.parseColor("#fafafa"));
+                        veryhighBFPLayout.setBackgroundColor(Color.parseColor("#fafafa"));*/
                         //////////////////////////////////
                     } else if (result[1].equals("normal")) {
-                        lowBFPLayout.setBackgroundColor(Color.parseColor("#fafafa"));
+                        bodyFatSetForResult(550.0f," Normal","#ecad44");
+
+
+                  /*      lowBFPLayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         //////////////////////////////////
                         normalBFPLayout.setBackgroundColor(Color.parseColor("#93c47d"));
                         highBFPLayout.setBackgroundColor(Color.parseColor("#fafafa"));
-                        veryhighBFPLayout.setBackgroundColor(Color.parseColor("#fafafa"));
+                        veryhighBFPLayout.setBackgroundColor(Color.parseColor("#fafafa"));*/
                         //////////////////////////////////
                         ////////////////////////////////
                     }else if (result[1].equals("high")) {
-                        lowBFPLayout.setBackgroundColor(Color.parseColor("#fafafa"));
+
+                        bodyFatSetForResult(800.0f," High","#da6339");
+
+                      /*  lowBFPLayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         //////////////////////////////////
                         normalBFPLayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         veryhighBFPLayout.setBackgroundColor(Color.parseColor("#fafafa"));
-                        highBFPLayout.setBackgroundColor(Color.parseColor("#f4cccc"));
+                        highBFPLayout.setBackgroundColor(Color.parseColor("#f4cccc"));*/
                         ////////////////////////////////
                     } else if (result[1].equals("veryhigh")) {
+
+                        bodyFatSetForResult(1050.0f," Very high","#ae232f");
+
+/*
                         lowBFPLayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         //////////////////////////////////
                         normalBFPLayout.setBackgroundColor(Color.parseColor("#fafafa"));
                         veryhighBFPLayout.setBackgroundColor(Color.parseColor("#f4cccc"));
-                        highBFPLayout.setBackgroundColor(Color.parseColor("#fafafa"));
+                        highBFPLayout.setBackgroundColor(Color.parseColor("#fafafa"));*/
                         //////////////////////////////////
                     }
                     hideSoftKeyboard();
@@ -871,6 +952,7 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         });
+
         waistFatofPercentageLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -924,10 +1006,7 @@ public class MainActivity extends AppCompatActivity
             if (!heightEditTextInch.getText().toString().equals(""))
                 gernalInch = Integer.parseInt(heightEditTextInch.getText().toString());
             opration_class oprationObject = new opration_class();
-        //    String gender = "man";
-               // public String calculateBMR(String weightType ,double weight,String heightType,double height,int age,String gender){
-
-            String getBMR = oprationObject.calculateBMR(weight_type, weight, height_type, height,age,gender,gernalInch);
+           String getBMR = oprationObject.calculateBMR(weight_type, weight, height_type, height,age,gender,gernalInch);
             String[] result = getBMR.split(",");
             resultBMRTextView.setText(getBMR);
          //  scrollView.fullScroll(View.FOCUS_DOWN);
@@ -944,6 +1023,12 @@ public class MainActivity extends AppCompatActivity
         if (mInterstitialAd.isLoaded()) {
             mInterstitialAd.show();
         }
+    }
+    public void bodyFatSetForResult(float margin,String word,String color){
+        moveArrowIcon(margin, arrowIconBodyFatPercentage);
+        bodyFatresultTextViewWord.setText(word);
+        bodyFatresultTextViewWord.setTextColor(Color.parseColor(color));
+
     }
     @Override
     public void onBackPressed() {
@@ -1057,7 +1142,7 @@ public class MainActivity extends AppCompatActivity
         ageGernalTextView.setTextColor(Color.parseColor("#d99a4d"));
         heightGernalTextView.setTextColor(Color.parseColor("#d99a4d"));
         weightgernalTextView.setTextColor(Color.parseColor("#d99a4d"));
-        calBodyMassIndexBtn.setBackgroundColor(Color.parseColor("#d99a4d"));
+        calBMIBtn.setBackgroundColor(Color.parseColor("#d99a4d"));
         heightToggleTextView.setTextColor(Color.parseColor("#d99a4d"));
         weightgernalTextView.setTextColor(Color.parseColor("#d99a4d"));
         dropDownGernalWeight.setImageResource ( R.drawable.dropbodymassindeximage);
@@ -1164,5 +1249,13 @@ public class MainActivity extends AppCompatActivity
     public void setActionBarTitleAndColor(String title, String color ){
         getSupportActionBar().setTitle(title);
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor(color)));
+    }
+    public void moveArrowIcon(float move ,ImageView arrowIcon){
+        TranslateAnimation animation = new TranslateAnimation(0.0f, move, 0.0f, 0.0f);
+        animation.setDuration(700);
+        //  animation.setRepeatCount(5);
+        //   animation.setRepeatMode(2);
+        animation.setFillAfter(true);
+        arrowIcon.startAnimation(animation);
     }
 }

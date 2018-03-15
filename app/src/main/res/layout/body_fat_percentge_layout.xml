@@ -182,26 +182,25 @@
             android:layout_centerHorizontal="true"
             android:layout_gravity="center_horizontal"
             />
-        <LinearLayout
+        <TextView
             android:layout_marginTop="2mm"
-            android:layout_marginLeft="5mm"
-            android:layout_marginRight="5mm"
+            android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="14mm"
-            android:background="@drawable/mass">
+            android:layout_height="wrap_content"
+            android:text="Fat"
+            android:textSize="4mm"
+            android:textColor="#f16e42"
+            />
+        <LinearLayout
+           android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           >
             <LinearLayout
                 android:layout_width="fill_parent"
 
                 android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Body Fat: "
-                    android:textSize="4mm"
-                    android:layout_marginTop="4mm"
-                    android:layout_marginLeft="2mm"
-                    android:textColor="#f16e42"
-                    />
+
                 <TextView
                     android:textColor="#f16e42"
                     android:id="@+id/body_fat_per_result"
@@ -209,8 +208,16 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textSize="5mm"
-                    android:layout_marginTop="4mm"
-                    android:layout_marginLeft="10mm"
+                    />
+                <TextView
+                    android:layout_marginLeft="2mm"
+                    android:textColor="#f16e42"
+                    android:id="@+id/body_fat_per_result_word"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="5mm"
+
                     />
                <!-- <TextView
                     android:textColor="#f24a57"
@@ -224,6 +231,19 @@
                     />-->
             </LinearLayout>
         </LinearLayout>
+        <ImageView
+            android:layout_marginLeft="5mm"
+            android:layout_marginRight="5mm"
+            android:id="@+id/arrowicon_body_fat_percentage"
+            android:background="@drawable/arrowicon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_marginLeft="5mm"
+            android:layout_marginRight="5mm"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@drawable/resultline"/>
         <LinearLayout
             android:id="@+id/lowbfp"
             android:layout_width="wrap_content"
@@ -256,7 +276,6 @@
         </LinearLayout>
         <LinearLayout
             android:id="@+id/normalbfp"
-
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="1mm"

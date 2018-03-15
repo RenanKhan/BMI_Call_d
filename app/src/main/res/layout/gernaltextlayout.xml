@@ -24,6 +24,7 @@
             android:layout_marginLeft="6mm"
             />
         <Button
+            android:layout_marginTop="1mm"
             android:id="@+id/femalbtnnwaisttoheight"
             android:layout_width="4.5mm"
             android:layout_height="7mm"
@@ -31,6 +32,7 @@
             android:layout_marginLeft="1.5mm"
             />
         <Button
+            android:layout_marginTop="1mm"
             android:id="@+id/malebtnnwaisttoheight"
             android:layout_width="4.5mm"
             android:layout_height="7mm"

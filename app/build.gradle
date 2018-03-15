@@ -23,8 +23,8 @@ android {
         applicationId "com.eclixtech.bmicalculator"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 8
-        versionName "1.7"
+        versionCode 11
+        versionName "2.0"
     }
     buildTypes {
         release {
@@ -43,4 +43,5 @@ dependencies {
         transitive = true;
     }
     compile 'com.google.android.gms:play-services-ads:8.4.0'
+
 }

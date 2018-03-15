@@ -24,12 +24,10 @@
                 android:layout_gravity="center_horizontal"
                 />
                 <LinearLayout
-                android:layout_marginTop="2mm"
-                android:layout_marginLeft="5mm"
-                android:layout_marginRight="5mm"
+                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="14mm"
-                android:background="@drawable/mass">
+                android:layout_height="wrap_content"
+              >
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
@@ -37,17 +35,27 @@
                         android:id="@+id/resultstutesbmi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Your BMI is:"
+                        android:text=""
                         android:textColor="#d99a4d"
                         android:textSize="4mm"
                         android:layout_marginTop="4mm"
-                        android:layout_marginLeft="8mm"
                         />
                     <TextView
                         android:id="@+id/bmiTextbodymasssresult"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="BMI"
+                        android:textColor="#d99a4d"
+                        android:textSize="5mm"
+                        android:layout_marginTop="4mm"
+                        android:layout_marginLeft="5mm"
+                        />
+                    <TextView
+                        android:id="@+id/bmiTextbodymasssresultwords"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:text=""
+                        android:textStyle="bold"
                         android:textColor="#d99a4d"
                         android:textSize="5mm"
                         android:layout_marginTop="4mm"
@@ -55,6 +63,20 @@
                         />
                 </LinearLayout>
             </LinearLayout>
+
+            <ImageView
+                android:layout_marginLeft="5mm"
+                android:layout_marginRight="5mm"
+                android:id="@+id/arrowicon"
+                android:background="@drawable/arrowicon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:layout_marginLeft="5mm"
+                android:layout_marginRight="5mm"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+                android:background="@drawable/resultline"/>
             <LinearLayout
                 android:id="@+id/underweight_name"
                 android:layout_height="wrap_content"
